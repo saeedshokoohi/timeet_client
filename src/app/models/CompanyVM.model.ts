@@ -17,8 +17,11 @@ export class CompanyVM
   tags
   agreement;
   setting;
-  constructor(title:string)
+
+  constructor( title:string)
   {
     this.title=title;
+    this.id=0;
+    this.description='no description';
   }
 }
