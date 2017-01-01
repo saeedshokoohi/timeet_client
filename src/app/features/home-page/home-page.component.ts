@@ -14,7 +14,7 @@ import {CompanyVM} from "../../models/CompanyVM.model";
 export class HomePageComponent implements OnDestroy, OnInit {
   private url ;
   company:CompanyVM=new CompanyVM('not set');
-  private baseurl;
+  public baseurl;
   constructor(    public route: ActivatedRoute,
                   public router: Router,
                   public translate: TranslateService,
@@ -25,7 +25,6 @@ export class HomePageComponent implements OnDestroy, OnInit {
 
   ngOnInit():void {
    this.route.params.subscribe(params => {
-      debugger;
       this.baseurl = params['baseurl'];
 
 

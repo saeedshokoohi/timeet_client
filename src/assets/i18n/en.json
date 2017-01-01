@@ -2,5 +2,10 @@
   "toolbar": {
     "home": "صفحه اصلی",
     "contactUs": "تماس با ما"
+  },
+  "slider":
+  {
+    "reserveBtn":"رزرو",
+    "moreDetailBtn":"اطلاعات بیشتر"
   }
 }

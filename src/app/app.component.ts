@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { views } from './app-nav-views';
@@ -13,6 +13,7 @@ import {OnInit} from "../../node_modules/@angular/core/src/metadata/lifecycle_ho
 @Component({
   selector: 'my-app',
   styleUrls: ['./app.component.css'],
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CompanyService],
   templateUrl: './app.component.html'
 })
@@ -28,11 +29,13 @@ export class AppComponent implements OnInit {
   private baseurl;
 
   constructor(
+    public ref:ChangeDetectorRef,
     public route: ActivatedRoute,
     public router: Router,
     public translate: TranslateService,
     private companyService:CompanyService
   ) {
+
     this.company=new CompanyVM('');
     translate.setDefaultLang('en');
     // the lang to use, if the lang isn't available, it will use the current loader to get them

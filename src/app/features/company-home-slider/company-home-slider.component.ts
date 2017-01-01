@@ -9,13 +9,13 @@ import {CategoryVM} from "../../models/CategoryVM.model";
 
 
 @Component({
-  selector: 'company-categories',
-  templateUrl: 'company-categories.component.html',
+  selector: 'company-home-slider',
+  templateUrl: 'company-home-slider.component.html',
   providers: [CategoryService, CompanyService]
 
 })
 
-export class CompanyCategoriesComponent implements OnDestroy, OnInit,OnChanges {
+export class CompanyHomeSliderComponent implements OnDestroy, OnInit,OnChanges {
   public test:number = 1000;
 
   private url;
