@@ -1,0 +1,96 @@
+<div id="contact">
+  <div class="container">
+    <div class="text-center">
+      <h3>{{'contactUs.title' | translate}}</h3>
+      <p>{{'contactUs.main_description' | translate}}</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
+        <div id="sendmessage">Your message has been sent. Thank you!</div>
+        <div id="errormessage"></div>
+        <div class="contactForm text-right">
+          <div class="form-group ">
+            <input type="text" name="name" class="form-control" id="name" placeholder="{{'contactUs.yourName' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="{{'contactUs.emailAddress' | translate}}" data-rule="email" data-msg="Please enter a valid email" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="{{'contactUs.subject' | translate}}" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="" placeholder="{{'contactUs.pleaseWriteSomething' | translate}}"></textarea>
+            <div class="validation"></div>
+          </div>
+
+          <button type="submit" class="btn btn-theme pull-left">{{'contactUs.sendMessage' | translate}}</button>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 wow fadeInUp text-right" data-wow-offset="0" data-wow-delay="0.4s">
+        <h2>{{'contactUs.contactInfo' | translate}}</h2>
+        <ul>
+          <li *ngIf="company.location!=undefined"><i  class="fa fa-home fa-2x"></i> <span>{{company.location.address}}</span></li><hr>
+          <li><i class="fa fa-phone fa-2x"></i><span>{{company.phoneNumber}}</span></li><hr>
+          <li><i class="fa fa-envelope fa-2x"></i><span> {{company.webSiteUrl}}</span></li>
+        </ul>
+      </div>
+      <div class="col-md-4 wow fadeInUp text-right" data-wow-offset="0" data-wow-delay="0.2s">
+        <h2>{{'contactUs.moreTitle' | translate}}</h2>
+        <p>{{'contactUs.moreDescription' | translate}}</p>
+      </div>
+
+      </div>
+    </div>
+  </div><!--/#contact-->
+  <div class="container">
+    <div class="sub-footer">
+      <div class="text-center">
+        <div class="col-md-12">
+          <div class="form-inline">
+            <div class="form-group">
+              <button type="purchase" name="purchase" class="btn btn-primary btn-lg" required="required">Enter Your Email</button>
+            </div>
+            <div class="form-group">
+              <button type="subscribe" name="subscribe" class="btn btn-primary btn-lg" required="required">Subscribe Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="social-icon">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-3">
+        <ul class="social-network">
+          <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="#" class="dribbble tool-tip" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
+          <li><a href="#" class="pinterest tool-tip" title="Pinterest"><i class="fa fa-pinterest-square"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="copyright">
+      &copy; Bikin Theme. All Rights Reserved.
+      <div class="credits">
+        <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Bikin
+        -->
+        <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </div>

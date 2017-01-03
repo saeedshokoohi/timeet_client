@@ -8,4 +8,22 @@
     "reserveBtn":"رزرو",
     "moreDetailBtn":"اطلاعات بیشتر"
   }
+  ,
+  "contactUs":
+  {
+    "title":"تماس با ما",
+    "main_description":"جهت تماس از اطلاعات زیر استفاده کنید",
+    "moreTitle":"ما منتظر تماس شما هستیم",
+    "moreDescription":"در هر زمان از شبانه روز ما آماده پاسخگویی به پرسش ها نظرات و انتقادات شما هستیم",
+    "contactInfo":"اطلاعات تماس",
+    "sendMessage":"ارسال پیام",
+    "yourName":"نام شما",
+    "emailAddress":"آدرس ایمیل",
+    "subject":"موضوع",
+    "pleaseWriteSomething":"لطفا چیزی برای ما بنویسید..."
+  },
+  "serviceItem":
+  {
+    "book":"رزرو"
+  }
 }

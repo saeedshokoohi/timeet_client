@@ -47,14 +47,13 @@ export class AppComponent implements OnInit {
 
   }
   activateEvent(event) {
-
+debugger;
     if(event.route)
     {
       event.route.params.subscribe(params => {
         debugger;
         this.baseurl = params['baseurl'];
-
-
+        if(this.baseurl)
         console.log(this.baseurl);
         this.companyService.getCompanyInfo(this.baseurl).subscribe(company=>{
 

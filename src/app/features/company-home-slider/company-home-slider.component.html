@@ -12,7 +12,8 @@
       <div class="carousel-inner">
 
         <div *ngFor="let cat of rootCategories;let i = index;"  [ngClass]="{'active': i==0 }" class="item" >
-          <image-holder [image]="cat.coverImage"></image-holder>
+          <img src="./assets/themes/default/img/{{i}}.jpg" class="img-responsive" alt="">
+          <!--<image-holder [image]="cat.coverImage"></image-holder>-->
           <div class="carousel-caption">
             <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
               <h2><span>{{cat.categoryName}}</span></h2>

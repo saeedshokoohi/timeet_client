@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit,Input,OnChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit,Input,OnChanges,ChangeDetectionStrategy,ApplicationRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {TranslateService} from "../../../../node_modules/ng2-translate/src/translate.service";
@@ -6,27 +6,28 @@ import {CompanyService} from "../../services/company-service/company-service";
 import {CompanyVM} from "../../models/CompanyVM.model";
 import {CategoryService} from "../../services/category/category.service";
 import {CategoryVM} from "../../models/CategoryVM.model";
-import {ImageVM} from "../../models/ImageVM.model";
+import {ServiceItemVM} from "../../models/ServiceItemVM";
 
 
 @Component({
-  selector: 'image-holder',
-  templateUrl: 'image-holder.component.html',
+  selector: 'service-item-single-block',
+  templateUrl: 'service-item-single-block.component.html',
   providers: [CategoryService, CompanyService]
 
 })
 
-export class ImageHolderComponent implements OnDestroy, OnInit,OnChanges {
+export class ServiceItemSingleBlockComponent implements OnDestroy, OnInit,OnChanges {
+@Input() serviceItem:ServiceItemVM
 
-  @Input('image') image:ImageVM;
-  private base64Image:string;
-  private noImage:boolean;
   constructor(
-
+    private ref:ChangeDetectorRef,
               public route:ActivatedRoute,
-              public router:Router) {
+              public router:Router,
+              public translate:TranslateService,
+              private companyService:CompanyService,
+              private categoryService:CategoryService) {
 
-this.noImage=false;
+
   }
 
   ngOnDestroy():void {
@@ -35,18 +36,11 @@ this.noImage=false;
   ngOnInit():void {
 
 
-
   }
 
   ngOnChanges(changes):void {
-    if (changes.image && this.image!=null && this.image!=undefined ) {
-      this.base64Image = 'data:' + this.image.fileDataContentType + ';base64,' + this.image.fileData;
-    this.noImage=false;
-    }
-    else
-    {
-      this.noImage=true;
 
-    }
+
+
   }
 }
