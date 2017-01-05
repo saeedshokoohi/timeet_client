@@ -5,7 +5,7 @@
       <div class="col-md-12 text-center" >
         <div class="row">
           <div class="col-md-4" *ngFor="let cat of categories" >
-            <category-single-block [category]="cate"></category-single-block>
+            <category-single-block [company]="company" [category]="cate"></category-single-block>
           </div>
         </div>
       </div>
@@ -17,8 +17,8 @@
       <div class="col-md-12 text-center" >
         <!--<md-content class="md-padding" layout-xs="column" layout="row">-->
           <div class="row">
-            <div class="col-md-2" *ngFor="let ser of serviceItems" >
-              <service-item-single-block [serviceItem]="ser"></service-item-single-block>
+            <div class="col-md-12" *ngFor="let ser of serviceItems" >
+              <service-item-single-block [company]="company" [serviceItem]="ser"></service-item-single-block>
             </div>
           </div>
 

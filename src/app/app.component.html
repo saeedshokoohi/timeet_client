@@ -47,8 +47,12 @@
       </div>
     </div><!--/.container-->
   </nav><!--/nav-->
-</header><!--/header-->
+</header>
+<section style="padding: 10px">
+
+  <!--/header-->
 <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
+</section>
 <footer>
   <contact-us [company]="company" [baseurl]="baseurl"></contact-us>
 

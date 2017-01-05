@@ -5,6 +5,7 @@ import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
 import {HomePageComponent} from "./features/home-page/home-page.component";
 import {CategoryDetailComponent} from "./features/category-detail/category-detail.component";
+import {ServiceItemDetailComponent} from "./features/service-item-detail/service-item-detail.component";
 
 export const routes:Routes = [
   //{path: '', component: DashboardComponent, pathMatch: 'full'},
@@ -13,5 +14,6 @@ export const routes:Routes = [
   {path: ':baseurl', component: HomePageComponent},
   {path: ':baseurl/home',component: HomePageComponent},
   {path:':baseurl/categorydetail/:id',component:CategoryDetailComponent},
+  {path:':baseurl/serviceitemdetail/:id',component:ServiceItemDetailComponent},
   {path: '**', component: NotFound404Component}
 ];

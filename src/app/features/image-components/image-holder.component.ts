@@ -12,6 +12,7 @@ import {ImageVM} from "../../models/ImageVM.model";
 @Component({
   selector: 'image-holder',
   templateUrl: 'image-holder.component.html',
+  styleUrls:['image-holder.style.css'],
   providers: [CategoryService, CompanyService]
 
 })
@@ -19,6 +20,7 @@ import {ImageVM} from "../../models/ImageVM.model";
 export class ImageHolderComponent implements OnDestroy, OnInit,OnChanges {
 
   @Input('image') image:ImageVM;
+  @Input('image-class') imgClass:string;
   private base64Image:string;
   private noImage:boolean;
   constructor(

@@ -9,9 +9,10 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {API_URL_ROOT_CATEGORIES_BY_KEY_URL,API_URL_SERVICES_BY_CATEGORY_ID,
-         API_URL_CATEGORIES_BY_PARENT_ID}  from '../constants';
+         API_URL_CATEGORIES_BY_PARENT_ID,API_URL_SERVICE_DETAIL_BY_SERVICE_ID}  from '../constants';
 import {CategoryVM} from "../../models/CategoryVM.model";
 import {ServiceItemVM} from "../../models/ServiceItemVM";
+import {ServiceItemDetailVM} from "../../models/ServiceItemDetailVM";
 
 @Injectable()
 export class CategoryService {
@@ -50,6 +51,14 @@ export class CategoryService {
       .map((res:Response) => { return res.json();})
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+  }
+  getServiceItemDetailById(id:Number):Observable<ServiceItemDetailVM>  {
+    return this.http.get(API_URL_SERVICE_DETAIL_BY_SERVICE_ID + '/' + id)
+      // ...and calling .json() on the response to return data
+      .map((res:Response) => { return res.json();})
+      //...errors if any
+      .catch((error:any) => Observable.throw(error || 'Server error'));
 
   }
 }

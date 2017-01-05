@@ -7,34 +7,33 @@ import {CompanyVM} from "../../models/CompanyVM.model";
 import {CategoryService} from "../../services/category/category.service";
 import {CategoryVM} from "../../models/CategoryVM.model";
 import {ServiceItemVM} from "../../models/ServiceItemVM";
+import {ServiceItemDetailVM} from "../../models/ServiceItemDetailVM";
 
 
 @Component({
-  selector: 'category-detail',
-  templateUrl: 'category-detail.component.html',
+  selector: 'service-item-detail',
+  templateUrl: 'service-item-detail.component.html',
+  styleUrls:['service-item-detail.style.css'],
   providers: [CategoryService, CompanyService]
 
 })
 
-export class CategoryDetailComponent implements OnDestroy, OnInit,OnChanges {
+export class ServiceItemDetailComponent implements OnDestroy, OnInit,OnChanges {
   public test:number = 1000;
 
   private url;
-  public categories:CategoryVM[] = [];
-  public serviceItems:ServiceItemVM[] = [];
-  public _ref:ChangeDetectorRef;
+  public serviceItemDetail:ServiceItemDetailVM;
   private id:number;
-  private baseUrl;
-  private company:CompanyVM;
 
 
-  constructor(private ref:ChangeDetectorRef,
+  constructor(
+    private ref:ChangeDetectorRef,
               public route:ActivatedRoute,
               public router:Router,
               public translate:TranslateService,
               private companyService:CompanyService,
               private categoryService:CategoryService) {
-
+this.serviceItemDetail=new ServiceItemDetailVM();
 
   }
 
@@ -43,38 +42,22 @@ export class CategoryDetailComponent implements OnDestroy, OnInit,OnChanges {
 
   ngOnInit():void {
     this.route.params.subscribe(params => {
-      console.log('base url :')
-      console.log(this);
       this.id = params['id'];
-      this.baseUrl=params['baseurl'];
-      var parent=this;
-      if(this.baseUrl)
-        this.companyService.getCompanyInfo(this.baseUrl)
-          .subscribe(function (com) {
-            debugger;
-            if (com  ) {
 
-              parent.company=com;
-            }
-          })
+      this.categoryService.getServiceItemDetailById(this.id).subscribe(sd=>{
+        console.log('service detail');
+        console.log(sd);
+        this.serviceItemDetail=sd;},error=>{
+        console.log(error);});
 
-if(this.id)
-      this.categoryService.getCategoriesByParentId(this.id).subscribe(cats=> {
-        this.categories = cats;
-      }, error=> {
-        console.log(error);
-      });
-      this.categoryService.getServiceItemsByCategoryId(this.id).subscribe(items=> {
-        this.serviceItems = items;
-      }, error=> {
-        console.log(error);
-      });
     });
+
 
 
   }
 
   ngOnChanges(changes):void {
+
 
 
   }

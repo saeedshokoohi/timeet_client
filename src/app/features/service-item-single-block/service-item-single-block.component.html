@@ -1,22 +1,39 @@
-<md-card class="example-card">
-  <md-card-header>
-    <div md-card-avatar class="example-header-image"></div>
-    <md-card-title>{{serviceItem.itemTitle}}</md-card-title>
-    <md-card-subtitle>{{serviceItem.description}}</md-card-subtitle>
-  </md-card-header>
-  <image-holder [image]="serviceItem.coverImage"></image-holder>
+<md-card class="service-item-block">
+  <!--<md-card-header>-->
+    <!--<div md-card-avatar class="example-header-image"></div>-->
+    <!--<md-card-title></md-card-title>-->
+    <!--<md-card-subtitle></md-card-subtitle>-->
+  <!--</md-card-header>-->
+
   <md-card-content>
+    <div class="row" >
+      <div class="col-sm-2" >
+        <a class="btn btn-default"  [routerLink]="[detailUrl]"  >{{'serviceItem.book' | translate}}</a>
+      </div>
+      <div class="col-sm-7" >
+        <div class="service-title">
+          <h2 class="text-right">
+          {{serviceItem.itemTitle}}
+          </h2>
+        </div>
+        <div class="text-right">
+          {{serviceItem.description}}
+        </div>
+      </div>
+      <div class="col-sm-3" >
+        <image-holder [image-class]="'service-item-image'" [image]="serviceItem.coverImage"></image-holder>
+      </div>
+
+    </div>
     <!--<p>-->
       <!--The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.-->
       <!--A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally-->
       <!--bred for hunting.-->
     <!--</p>-->
   </md-card-content>
-  <md-card-actions>
-    <button md-button>{{'serviceItem.book' | translate}}</button>
-    <!--<button md-button>SHARE</button>-->
-  </md-card-actions>
+
 </md-card>
+<hr/>
 <!--<md-card>-->
   <!---->
   <!--<md-card-title>-->

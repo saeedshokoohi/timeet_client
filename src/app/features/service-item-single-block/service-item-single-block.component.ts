@@ -12,12 +12,15 @@ import {ServiceItemVM} from "../../models/ServiceItemVM";
 @Component({
   selector: 'service-item-single-block',
   templateUrl: 'service-item-single-block.component.html',
+  styleUrls:['service-item-single-block.style.css'],
   providers: [CategoryService, CompanyService]
 
 })
 
 export class ServiceItemSingleBlockComponent implements OnDestroy, OnInit,OnChanges {
 @Input() serviceItem:ServiceItemVM
+  private detailUrl;
+  @Input()  company:CompanyVM;
 
   constructor(
     private ref:ChangeDetectorRef,
@@ -39,8 +42,11 @@ export class ServiceItemSingleBlockComponent implements OnDestroy, OnInit,OnChan
   }
 
   ngOnChanges(changes):void {
-
-
+    console.log('changes:');
+    console.log(changes);
+if(this.company && this.serviceItem) {
+  this.detailUrl = '/' + this.company.keyUrl + '/serviceitemdetail/' + this.serviceItem.id;
+}
 
   }
 }

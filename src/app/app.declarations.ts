@@ -8,6 +8,7 @@ import {ContactUsComponent} from "./features/contact-us/contact-us.component";
 import {CategoryDetailComponent} from "./features/category-detail/category-detail.component";
 import {ServiceItemSingleBlockComponent} from "./features/service-item-single-block/service-item-single-block.component";
 import {CategorySingleBlockComponent} from "./features/category-single-block/category-single-block.component";
+import {ServiceItemDetailComponent} from "./features/service-item-detail/service-item-detail.component";
 
 export const APP_DECLARATIONS = [
   DashboardComponent,
@@ -19,5 +20,6 @@ export const APP_DECLARATIONS = [
   ContactUsComponent,
   CategoryDetailComponent,
   CategorySingleBlockComponent,
-  ServiceItemSingleBlockComponent
+  ServiceItemSingleBlockComponent,
+  ServiceItemDetailComponent
 ];
