@@ -10,6 +10,7 @@ import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
+
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { Store } from '@ngrx/store';
@@ -27,6 +28,7 @@ import {TranslateModule} from "../../node_modules/ng2-translate/index";
 import {TranslateLoader} from "../../node_modules/ng2-translate/src/translate.service";
 import {Http} from "../../node_modules/@angular/http/src/http";
 import {TranslateStaticLoader} from "../../node_modules/ng2-translate/src/translate.service";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {TranslateStaticLoader} from "../../node_modules/ng2-translate/src/transl
   imports: [
     APP_IMPORTS,
     BrowserModule,
+    FormsModule,
     HttpModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,

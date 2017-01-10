@@ -1,0 +1,194 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<div>
+
+  <div id="orderBagServiceItemDtail">
+
+
+    <div [hidden]="formState!='orderbagitem'">
+      <!--<div class="row">-->
+
+            <span>
+
+                     <div class="panel panel-default">
+                       <div class="panel-heading">{{serviceItemDetail.itemTitle}}</div>
+                       <div class="panel-body">
+
+                         <div *ngFor="let priceInfoDtail of orderBagItem.qtyList" class="form-group">
+
+                           <div class="row">
+                             <div class="col-sm-7"></div>
+                             <div class="col-sm-2 text-left">{{'orderBagServiceItemDtail.price' | translate}} :
+
+                               {{priceInfoDtail.priceWithDiscount}}
+                               {{'common.priceUnit' | translate}}
+                             </div>
+
+                             <div class="col-sm-1">
+                               <input type="number" (ngModelChange)="itemChanged($event)"  class="form-control-inline" style="width: 90%" name="qty"
+                                      id="field_qty"
+                                      [(ngModel)]="priceInfoDtail.qty"/>
+                             </div>
+                             <div class="col-sm-2">
+                               {{'orderBagServiceItemDtail.gty' | translate}}{{'
+                               '+priceInfoDtail.title}}
+                             </div>
+
+
+                           </div>
+                         </div>
+                         <br/>
+
+                         <div class="form-group" id="pfOptions">
+                           <fieldset class="panel-title">
+                             <legend> {{'orderBagServiceItem.optionList' | translate}}</legend>
+                             <div class="row">
+                               <div *ngFor="let option of orderBagItem.options" class="col-sm-6">
+                                 <md-checkbox  [(ngModel)]="option.selected" (ngModelChange)="itemChanged($event)">
+                                   {{option.optionName}} ({{option.priceInfoDtail.price}}{{'common.priceUnit' | translate}})
+                                 </md-checkbox>
+                               </div>
+                             </div>
+                           </fieldset>
+
+
+                         </div>
+
+
+                         <!--      <pf-order-bag-item-options service-item-id="serviceItemId"
+                                                          order-bag-service-item-dtail-id="priceInfoDtail.orderBagServiceItemDtailId"
+                                                          service-option-items="priceInfoDtail.options">
+
+                               </pf-order-bag-item-options>-->
+                       </div>
+
+                     </div>
+
+                </span>
+
+      <div>
+        <div class="panel panel-info">
+          <div class="panel-heading">{{'orderBagServiceItem.totalPrice' | translate}}</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-7"></div>
+              <div class="col-sm-2 text-right">
+                <input class="text-center"  [readOnly] [(ngModel)]="orderBagItem.totalPrice.subtotalServicePrice">
+                {{'common.priceUnit' | translate}}
+              </div>
+              <div class="col-sm-2 text-left ">
+                {{'orderBagServiceItem.subtotalServicePrice' | translate}}
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-7"></div>
+              <div class="col-sm-2 text-right">
+                <input class="text-center"  [readOnly] [(ngModel)]="orderBagItem.totalPrice.subtotalOptionPrice">
+                {{'common.priceUnit' | translate}}
+              </div>
+              <div class="col-sm-2 text-left ">
+                {{'orderBagServiceItem.subtotalOptionPrice' | translate}}
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-7"></div>
+              <div class="col-sm-2 text-right">
+                <input class="text-center"  [readOnly] [(ngModel)]="orderBagItem.totalPrice.subtotalDiscount">
+                {{'common.priceUnit' | translate}}
+              </div>
+              <div class="col-sm-2 text-left ">
+                {{'orderBagServiceItem.subtotalDiscount' | translate}}
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-7"></div>
+              <div class="col-sm-2 text-right">
+                <input class="text-center"  [readOnly] [(ngModel)]="orderBagItem.totalPrice.subtotalVAT">
+                {{'common.priceUnit' | translate}}
+              </div>
+              <div class="col-sm-2 text-left ">
+                {{'orderBagServiceItem.subtotalVAT' | translate}}
+              </div>
+
+            </div>
+
+            <div class="row text-success">
+              <div class="col-sm-7"></div>
+              <div class="col-sm-2 text-right">
+                <input class="text-center"  [readOnly] [(ngModel)]="orderBagItem.totalPrice.totalRowPrice">
+                {{'common.priceUnit' | translate}}
+              </div>
+              <div class="col-sm-2 text-left ">
+                {{'orderBagServiceItem.totalRowPrice' | translate}}
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="participantPerson" *ngIf="formState=='participant'">
+
+                    <span *ngFor="let participant of orderBagServiceItem.participantPersons">
+                        <div class="form-group" id="pfPersonInfo">
+
+                          <!--        <pf-person-info person-info="participant.personInfo">
+
+                                  </pf-person-info>-->
+
+                        </div>
+
+                    </span>
+
+
+    </div>
+
+
+    <div>
+      <button
+        (click)="addPricesToOrderbag()"
+        class="btn btn-primary btn-sm" *ngIf="formState=='orderbagitem'">
+        <span class="glyphicon glyphicon-menu-left">{{'orderBagServiceItem.next' | translate}}</span>
+
+      </button>
+
+      <button type="button"
+              (click)="prev()"
+              class="btn btn-primary btn-sm" *ngIf="formState=='participant'">
+        <span class="glyphicon glyphicon-menu-right">{{'orderBagServiceItem.prev' | translate}}</span>
+      </button>
+
+      <button
+        (click)="FinalApprove()"
+        class="btn btn-primary btn-sm" *ngIf="formState=='participant'">
+        <span>{{'orderBagServiceItem.approve' |  translate}}</span>
+      </button>
+
+
+    </div>
+    <!--</div>-->
+
+  </div>
+
+  <!--<div class="text-center">-->
+  <!--&lt;!&ndash; <jhi-item-count page="$ctrl.page" total="$ctrl.queryCount"></jhi-item-count>-->
+  <!--<uib-pagination class="pagination-sm" total-items="$ctrl.totalItems" ng-model="$ctrl.page" ng-change="$ctrl.transition()"></uib-pagination>&ndash;&gt;-->
+  <!--</div>-->
+
+
+</div>

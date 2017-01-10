@@ -26,10 +26,37 @@
     {{serviceItemDetail.description}}
   </div>
 </div>
+  <div class="row" >
+    <div class="col-md-12">
+      <br>
+
+    </div>
+  </div>
+  <fieldset>
 <div class="row">
   <div class="col-md-12">
 
+      <md-select class="date-select "  [(ngModel)]="selectedDate" (ngModelChange)="selectedDateChanged($event)"  placeholder="{{'serviceItem.selectDate' | translate}}" >
+        <md-option  *ngFor="let d of sessionDates" [value]="d" >
+          <span class="option" >
+          {{d.startDate }}
+            </span>
+        </md-option>
+      </md-select>
+
+    <md-select class="date-select " [(ngModel)]="selectedTime"  placeholder="{{'serviceItem.selectTime' | translate}}" >
+      <md-option  *ngFor="let d of sessionTimes" [value]="d" >
+          <span class="option" >
+          {{d.startTime}}
+            </span>
+      </md-option>
+    </md-select>
+    <button class="btn btn-info" (click)="addtocard()" > {{'serviceItem.addToOrderBag' | translate}}</button>
+
+
+
   </div>
 </div>
+  </fieldset>
 </div>
 </div>

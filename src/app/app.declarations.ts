@@ -9,6 +9,8 @@ import {CategoryDetailComponent} from "./features/category-detail/category-detai
 import {ServiceItemSingleBlockComponent} from "./features/service-item-single-block/service-item-single-block.component";
 import {CategorySingleBlockComponent} from "./features/category-single-block/category-single-block.component";
 import {ServiceItemDetailComponent} from "./features/service-item-detail/service-item-detail.component";
+import {OrderBagItemComponent} from "./features/order-bag-item/order-bag-item.component";
+import {PersianDate} from "./services/date-service/DateUtilService";
 
 export const APP_DECLARATIONS = [
   DashboardComponent,
@@ -21,5 +23,7 @@ export const APP_DECLARATIONS = [
   CategoryDetailComponent,
   CategorySingleBlockComponent,
   ServiceItemSingleBlockComponent,
-  ServiceItemDetailComponent
+  ServiceItemDetailComponent,
+  OrderBagItemComponent,
+  PersianDate
 ];

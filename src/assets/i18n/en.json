@@ -1,4 +1,8 @@
 {
+  "common":
+  {
+    "priceUnit":"تومان"
+  },
   "toolbar": {
     "home": "صفحه اصلی",
     "contactUs": "تماس با ما"
@@ -24,6 +28,36 @@
   },
   "serviceItem":
   {
-    "book":"رزرو"
+    "book":"رزرو",
+    "selectDate":"تاریخ مورد نظر را انتخاب کنید",
+    "selectTime":"زمان مورد نظر را انتخاب کنید",
+    "addToOrderBag":"اضافه به سبد خرید"
+  },
+  "orderBagServiceItem" : {
+    "status": "Status",
+    "subtotalServicePrice": "مجموع قیمت سرویسها",
+    "subtotalOptionPrice": "مجموع قیمت سرویسهای انتخابی",
+    "subtotalVAT": "مالیات بر ارزش افزوده",
+    "subtotalDiscount": "تخفیف",
+    "totalRowPrice": "مبلغ نهایی",
+    "orderBag": "Order Bag",
+    "serviceItem": "Service Item",
+    "next":"مرحله بعد",
+    "prev":"مرحله قبل",
+    "approve":"تائید نهایی",
+    "optionList":"خدمات اضافه",
+    "totalPrice":"مجموع قیمت ها"
+
+
+  },
+  "orderBagServiceItemDtail" : {
+    "reserveTime": "Reserve Time",
+    "gty": "تعداد",
+    "price": "قیمت",
+    "discount": "تخفیف",
+    "vat": "Vat",
+    "totalPrice": "Total Price",
+    "orderBagItem": "Order Bag Item",
+    "priceInfoDtail": "Price Info Dtail"
   }
 }

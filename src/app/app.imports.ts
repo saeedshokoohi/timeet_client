@@ -12,6 +12,7 @@ import { routes } from './app.routing';
 import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
+import { Ng2SelectModule } from 'ng2-material-select';
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -32,7 +33,7 @@ export const APP_IMPORTS = [
   RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
-
+  Ng2SelectModule,
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule
 ];
