@@ -7,6 +7,9 @@ import {HomePageComponent} from "./features/home-page/home-page.component";
 import {CategoryDetailComponent} from "./features/category-detail/category-detail.component";
 import {ServiceItemDetailComponent} from "./features/service-item-detail/service-item-detail.component";
 import {OrderBagItemComponent} from "./features/order-bag-item/order-bag-item.component";
+import {OrderBagComponent} from "./features/order-bag/order-bag.component";
+import {UserProfileComponent} from "./features/user-profile/user-profile.component";
+import {AuthGuard} from "./services/auth/AuthGuard";
 
 export const routes:Routes = [
   //{path: '', component: DashboardComponent, pathMatch: 'full'},
@@ -17,5 +20,8 @@ export const routes:Routes = [
   {path:':baseurl/categorydetail/:id',component:CategoryDetailComponent},
   {path:':baseurl/serviceitemdetail/:id',component:ServiceItemDetailComponent},
   {path:':baseurl/orderbagitem/:serviceitemid/:timesessionid',component:OrderBagItemComponent},
+  {path:':baseurl/orderbag',component:OrderBagComponent},
+  {path:':baseurl/userprofile',component:UserProfileComponent,canActivate: [AuthGuard]},
+
   {path: '**', component: NotFound404Component}
 ];

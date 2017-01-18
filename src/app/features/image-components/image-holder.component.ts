@@ -7,6 +7,7 @@ import {CompanyVM} from "../../models/CompanyVM.model";
 import {CategoryService} from "../../services/category/category.service";
 import {CategoryVM} from "../../models/CategoryVM.model";
 import {ImageVM} from "../../models/ImageVM.model";
+import {API_URL_IMAGE_BY_IMAGE_ID} from '../../services/constants';
 
 
 @Component({
@@ -42,7 +43,8 @@ this.noImage=false;
 
   ngOnChanges(changes):void {
     if (changes.image && this.image!=null && this.image!=undefined ) {
-      this.base64Image = 'data:' + this.image.fileDataContentType + ';base64,' + this.image.fileData;
+      this.base64Image=API_URL_IMAGE_BY_IMAGE_ID+"?imageDataId="+this.image.id;
+    //  this.base64Image = 'data:' + this.image.fileDataContentType + ';base64,' + this.image.fileData;
     this.noImage=false;
     }
     else

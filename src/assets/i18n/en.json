@@ -1,7 +1,14 @@
 {
   "common":
   {
-    "priceUnit":"تومان"
+    "priceUnit":"تومان",
+    "login":"ورود "
+  },
+  "login":
+  {
+    "title":"وارد شوید",
+    "userName":"نام کاربری",
+    "password":"کلمه عبور"
   },
   "toolbar": {
     "home": "صفحه اصلی",
@@ -59,5 +66,38 @@
     "totalPrice": "Total Price",
     "orderBagItem": "Order Bag Item",
     "priceInfoDtail": "Price Info Dtail"
+  },
+  "personInfo" : {
+
+    "nationalCode": "کد ملی",
+    "fisrtName": "نام",
+    "lastName":"نام خانوادگی",
+    "gender": {
+      "title": "جنسیت",
+      "female": "زن",
+      "male": "مرد"
+    },
+    "phoneNumber": "موبایل",
+    "birthDate": "تاریخ تولد",
+    "location": "آدرس",
+    "socialNetworkInfo": "Social Network Info",
+    "sections": {
+      "generalTab": "مشخصات فردی",
+      "locationTab": "آدرس"
+    }
+
+  }
+  ,
+  "orderBag":
+  {
+    "title":"سبد خرید",
+    "sessionTime":"زمان",
+    "options":"خدمات اضافه",
+    "serviceItemTitle":"عنوان سرویس",
+    "qty":"تعداد",
+    "price":"قیمت",
+    "discount":"تخفیف",
+    "totalPrice":"قیمت نهایی",
+    "removeItem":"حذف"
   }
 }

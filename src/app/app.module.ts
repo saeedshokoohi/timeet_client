@@ -27,8 +27,11 @@ import { AppState } from './reducers';
 import {TranslateModule} from "../../node_modules/ng2-translate/index";
 import {TranslateLoader} from "../../node_modules/ng2-translate/src/translate.service";
 import {Http} from "../../node_modules/@angular/http/src/http";
+
 import {TranslateStaticLoader} from "../../node_modules/ng2-translate/src/translate.service";
 import { FormsModule } from '@angular/forms';
+import {AuthInterceptor} from "./services/auth/http-interceptors";
+import {HttpInterceptorModule} from 'angular2-http-interceptor';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpInterceptorModule.withInterceptors([AuthInterceptor]),
+
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),

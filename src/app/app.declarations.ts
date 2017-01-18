@@ -11,6 +11,12 @@ import {CategorySingleBlockComponent} from "./features/category-single-block/cat
 import {ServiceItemDetailComponent} from "./features/service-item-detail/service-item-detail.component";
 import {OrderBagItemComponent} from "./features/order-bag-item/order-bag-item.component";
 import {PersianDate} from "./services/date-service/DateUtilService";
+import {ParticipantInfoComponent} from "./features/participant-info/participant-info.component";
+import {OrderBagComponent} from "./features/order-bag/order-bag.component";
+import {UserProfileComponent} from "./features/user-profile/user-profile.component";
+
+import {LoginFormComponent} from "./features/login/login.component";
+
 
 export const APP_DECLARATIONS = [
   DashboardComponent,
@@ -25,5 +31,6 @@ export const APP_DECLARATIONS = [
   ServiceItemSingleBlockComponent,
   ServiceItemDetailComponent,
   OrderBagItemComponent,
-  PersianDate
+  PersianDate,ParticipantInfoComponent,OrderBagComponent,
+  UserProfileComponent,LoginFormComponent
 ];

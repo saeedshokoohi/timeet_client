@@ -1,0 +1,62 @@
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="well well-lg" >
+<div class="container-fluid" >
+  <div class="row" >
+    <div class="col-md-12 text-center" *ngIf="serviceItemDetail.imageAlbum!=undefined" >
+      <div  *ngFor="let img of serviceItemDetail.imageAlbum.imageList" style="float: left">
+      <image-holder  [image-class]="'service-item-image'" [image]="img"></image-holder>
+      </div>
+    </div>
+  </div>
+<div class="row text-right">
+  <div class="col-md-8">
+
+  </div>
+  <div class="col-md-4">
+    <h2>
+        {{serviceItemDetail.itemTitle}}
+
+    </h2>
+    <br>
+    {{serviceItemDetail.description}}
+  </div>
+</div>
+  <div class="row" >
+    <div class="col-md-12">
+      <br>
+
+    </div>
+  </div>
+  <fieldset>
+<div class="row">
+  <div class="col-md-12">
+
+      <md-select class="date-select "  [(ngModel)]="selectedDate" (ngModelChange)="selectedDateChanged($event)"  placeholder="{{'serviceItem.selectDate' | translate}}" >
+        <md-option  *ngFor="let d of sessionDates" [value]="d" >
+          <span class="option" >
+          {{d.startDate }}
+            </span>
+        </md-option>
+      </md-select>
+
+    <md-select class="date-select " [(ngModel)]="selectedTime"  placeholder="{{'serviceItem.selectTime' | translate}}" >
+      <md-option  *ngFor="let d of sessionTimes" [value]="d" >
+          <span class="option" >
+          {{d.startTime}}
+            </span>
+      </md-option>
+    </md-select>
+    <button class="btn btn-info" (click)="addtocard()" > {{'serviceItem.addToOrderBag' | translate}}</button>
+
+
+
+  </div>
+</div>
+  </fieldset>
+</div>
+</div>

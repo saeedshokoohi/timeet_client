@@ -1,0 +1,135 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="panel panel-default">
+  <div class="panel-header">
+    {{'orderBag.title' | translate}}
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped text-center">
+      <thead>
+      <tr class="text-center">
+        <th class="text-center"></th>
+        <th class="text-center"></th>
+        <th class="text-center"> {{'orderBag.serviceItemTitle' | translate}}</th>
+        <th class="text-center"> {{'orderBag.sessionTime' | translate}}</th>
+        <th class="text-center"> {{'orderBag.options' | translate}}</th>
+        <th class="text-center"> {{'orderBag.qty' | translate}}</th>
+        <th class="text-center"> {{'orderBag.price' | translate}}</th>
+        <th class="text-center"> {{'orderBag.discount' | translate}}</th>
+        <th class="text-center"> {{'orderBag.totalPrice' | translate}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of orderBag.items">
+        <td>
+          <button class="btn btn-danger" (click)="removeItem(item)"  >{{'orderBag.removeItem' | translate}}</button>
+        </td>
+        <td>
+          <div style="width: 80px;height: 80px">
+            <image-holder [image]="item.serviceItem.coverImage"></image-holder>
+          </div>
+        </td>
+        <td>{{item.serviceItem.itemTitle}}</td>
+        <td>{{item.sessionTime.startTime}}</td>
+        <td>
+
+            <ul >
+              <li  *ngFor="let option of selectedOptions(item.options)">
+                <span   >{{option.optionName}}</span>
+              </li>
+            </ul>
+
+
+        </td>
+        <td>
+          <div *ngFor="let price of item.qtyList">
+            <span>{{price.title}}</span>: <span>{{price.qty}}</span>
+          </div>
+        </td>
+        <td>
+          {{item.totalPrice.subtotalServicePrice}}
+        </td>
+        <td>
+          {{item.totalPrice.subtotalDiscount}}
+        </td>
+        <td>
+          <b> {{item.totalPrice.totalRowPrice}}</b>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th colspan="9" class="text-center">
+
+          <div class="panel panel-info">
+            <div class="panel-heading">{{'orderBagServiceItem.totalPrice' | translate}}</div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 text-right">
+                  <input class="text-center" [readOnly] [(ngModel)]="totalPrice.subtotalOptionPrice">
+                  {{'common.priceUnit' | translate}}
+                </div>
+                <div class="col-sm-2 text-left ">
+                  {{'orderBagServiceItem.subtotalOptionPrice' | translate}}
+                </div>
+                <div class="col-sm-2 text-right">
+                  <input class="text-center" [readOnly] [(ngModel)]="totalPrice.subtotalServicePrice">
+                  {{'common.priceUnit' | translate}}
+                </div>
+                <div class="col-sm-2 text-left ">
+                  {{'orderBagServiceItem.subtotalServicePrice' | translate}}
+                </div>
+
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 text-right">
+                  <input class="text-center" [readOnly] [(ngModel)]="totalPrice.subtotalVAT">
+                  {{'common.priceUnit' | translate}}
+                </div>
+                <div class="col-sm-2 text-left ">
+                  {{'orderBagServiceItem.subtotalVAT' | translate}}
+                </div>
+                <div class="col-sm-2 text-right">
+                  <input class="text-center" [readOnly] [(ngModel)]="totalPrice.subtotalDiscount">
+                  {{'common.priceUnit' | translate}}
+                </div>
+                <div class="col-sm-2 text-left ">
+                  {{'orderBagServiceItem.subtotalDiscount' | translate}}
+                </div>
+
+              </div>
+
+
+
+              <div class="row text-success">
+
+                <div class="col-sm-2 text-right">
+                  <input class="text-center" [readOnly] [(ngModel)]="totalPrice.totalRowPrice">
+                  {{'common.priceUnit' | translate}}
+                </div>
+                <div class="col-sm-2 text-left ">
+                  {{'orderBagServiceItem.totalRowPrice' | translate}}
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+        </th>
+
+      </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+</div>

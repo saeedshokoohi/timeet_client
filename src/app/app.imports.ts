@@ -13,6 +13,8 @@ import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
 import { Ng2SelectModule } from 'ng2-material-select';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -35,6 +37,8 @@ export const APP_IMPORTS = [
   StoreModule.provideStore(rootReducer),
   Ng2SelectModule,
   STORE_DEV_TOOLS_IMPORTS,
-  StoreDevToolsModule
+  StoreDevToolsModule,
+  ModalModule.forRoot(),
+  BootstrapModalModule
 ];
 

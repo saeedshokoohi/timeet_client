@@ -1,6 +1,10 @@
 export const MOBILE = (typeof window !== 'undefined') ? (window.screen.availWidth < 800) : true;
 //export const API_BASE_URL: string = `http://${HOST}:${PORT}`;
 export const API_BASE_URL: string = `http://localhost:8080`;
+export const API_URL_LOGIN: string = API_BASE_URL+'/api/authentication';
+export const API_URL_LOGEDINUSER: string = API_BASE_URL+'/api/authenticate';
+export const API_URL_ACCOUNT: string = API_BASE_URL+'/api/account';
+export const API_URL_LOGOUT: string = API_BASE_URL+'/api/logout';
 export const API_URL_COMPANY_BY_KEY_URL: string = API_BASE_URL+'/api/client/get-company-info-by-key-url';
 export const API_URL_ROOT_CATEGORIES_BY_KEY_URL: string = API_BASE_URL+'/api/client/get-root-categories-by-key-url';
 export const API_URL_CATEGORIES_BY_PARENT_ID: string = API_BASE_URL+'/api/client/get-categories-by-parent';
@@ -10,3 +14,5 @@ export const API_URL_SERVICE_SESSION_DATES_BY_SERVICE_ID: string = API_BASE_URL+
 export const API_URL_SERVICE_SESSION_TIMES_BY_SERVICE_ID: string = API_BASE_URL+'/api/client/get-service-time-session-times-in-one-date';
 export const API_URL_PRICE_INFO_DETAIL_BY_SERVICE_ID: string = API_BASE_URL+'/api/client/price-info-dtails-by-service-item-from-time-session';
 export const API_URL_SERVICE_OPTIONS_BY_SERVICE_ID: string = API_BASE_URL+'/api/client/service-option-items-by-service-item';
+export const API_URL_SERVICE_TIME_SESSION_BY_ID: string = API_BASE_URL+'/api/client/get-service-time-session-by-id';
+export const API_URL_IMAGE_BY_IMAGE_ID: string = API_BASE_URL+'/api/client/get-image-data-by-id';

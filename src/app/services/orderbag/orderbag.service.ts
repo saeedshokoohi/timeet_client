@@ -8,7 +8,8 @@ import {Observable} from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {API_URL_PRICE_INFO_DETAIL_BY_SERVICE_ID,API_URL_SERVICE_OPTIONS_BY_SERVICE_ID
+import {API_URL_PRICE_INFO_DETAIL_BY_SERVICE_ID,API_URL_SERVICE_OPTIONS_BY_SERVICE_ID,
+  API_URL_SERVICE_TIME_SESSION_BY_ID
         }  from '../constants';
 import {CategoryVM} from "../../models/CategoryVM.model";
 import {ServiceItemVM} from "../../models/ServiceItemVM";
@@ -36,6 +37,15 @@ export class OrderBagService {
   }
   getServiceItemOptionsByServiceItemid(serviceid:number):Observable<ServiceOptionVM[]> {
     return this.http.get(API_URL_SERVICE_OPTIONS_BY_SERVICE_ID+ '?serviceItemId=' +serviceid )
+      // ...and calling .json() on the response to return data
+      .map((res:Response) => {
+        return res.json();
+      })
+      //...errors if any
+      .catch((error:any) => Observable.throw(error || 'Server error'));
+  }
+  getServiceTimeSessionById(sessionid:number):Observable<SessionTimeVM> {
+    return this.http.get(API_URL_SERVICE_TIME_SESSION_BY_ID+ '?serviceTimeSessionId=' +sessionid )
       // ...and calling .json() on the response to return data
       .map((res:Response) => {
         return res.json();

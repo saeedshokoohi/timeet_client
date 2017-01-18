@@ -7,7 +7,7 @@
   <div id="orderBagServiceItemDtail">
 
 
-    <div [hidden]="formState!='orderbagitem'">
+    <div [hidden]="formState!=0">
       <!--<div class="row">-->
 
             <span>
@@ -142,10 +142,13 @@
 
     </div>
 
-    <div id="participantPerson" *ngIf="formState=='participant'">
+    <div [hidden]="formState!=1" >
 
-                    <span *ngFor="let participant of orderBagServiceItem.participantPersons">
+                    <span *ngFor="let participant of orderBagItem.participants">
+
                         <div class="form-group" id="pfPersonInfo">
+
+                          <participant-info [participant]="participant"  ></participant-info>
 
                           <!--        <pf-person-info person-info="participant.personInfo">
 
@@ -161,8 +164,14 @@
 
     <div>
       <button
-        (click)="addPricesToOrderbag()"
-        class="btn btn-primary btn-sm" *ngIf="formState=='orderbagitem'">
+      (click)="gotoStep2()"
+      class="btn btn-primary btn-sm" *ngIf="formState==0">
+      <span class="glyphicon glyphicon-menu-left">{{'orderBagServiceItem.next' | translate}}</span>
+
+    </button>
+      <button
+        (click)="gotoStep3()"
+        class="btn btn-primary btn-sm" *ngIf="formState==1">
         <span class="glyphicon glyphicon-menu-left">{{'orderBagServiceItem.next' | translate}}</span>
 
       </button>

@@ -6,6 +6,7 @@ import {ImageVM} from "./ImageVM.model";
 export class PriceInfoDetailVM
 {
   id: number;
+  title:string;
   qty:number=0;
   priceWithDiscount:number=0;
   price:number=0;

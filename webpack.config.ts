@@ -94,6 +94,8 @@ const DLL_VENDORS = [
   'ngrx-store-freeze',
   'ngrx-store-logger',
   'rxjs',
+  'angular2-cookie',
+  //'angular2-jwt',
   ...MY_VENDOR_DLLS
 ];
 
