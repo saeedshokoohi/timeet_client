@@ -1,0 +1,43 @@
+<div class="container" >
+  <div class="row" >
+    <br/>
+  </div>
+<div class="row" >
+  <div class="col-md-3" ></div>
+  <div class="col-md-7" >
+    <div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="alert alert-success" *ngIf="success" [innerHtml]="'activate.messages.success' | translate" translate-compile>
+            <strong>Your user has been activated.</strong> Please <a class="alert-link" href="" ng-click="login()">sign in</a>.
+          </div>
+          <div class="alert alert-success" *ngIf="re_success" [innerHtml]="'activate.messages.reg_success' | translate" translate-compile>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="re_error" [innerHtml]="'activate.messages.reg_error' | translate">
+          </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+
+
+          <div class="form-group">
+            <label class="control-label" for="activationCode" [translate]="'activate.activationCode' | translate">activation code</label>
+            <input type="text" class="form-control" id="activationCode" name="activationCode" placeholder="{{'activate.activationCode' | translate}}"
+                   [(ngModel)]="activationCode"  required>
+
+          </div>
+
+          <button type="button" class="btn btn-primary" (click)="activateAccount()" [translate]="'activate.title'">activate</button>
+           <br/>
+          <button type="button" class="btn-link " (click)="regenerateActivateCode()" [translate]="'activate.regenerate'">activate</button>
+
+          <p></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2" ></div>
+</div>
+</div>
+

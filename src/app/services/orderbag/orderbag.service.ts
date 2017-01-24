@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {API_URL_PRICE_INFO_DETAIL_BY_SERVICE_ID,API_URL_SERVICE_OPTIONS_BY_SERVICE_ID,
+import {API_URL_PRICE_INFO_DETAIL_BY_SERVICE_ID,API_URL_SERVICE_OPTIONS_BY_SERVICE_ID,API_URL_CONFIRM_ORDER_BAG,
   API_URL_SERVICE_TIME_SESSION_BY_ID
         }  from '../constants';
 import {CategoryVM} from "../../models/CategoryVM.model";
@@ -18,6 +18,7 @@ import {SessionDateVM} from "../../models/SessionDateVM.model";
 import {SessionTimeVM} from "../../models/SessionTimeVM.model";
 import {PriceInfoDetailVM} from "../../models/PriceInfoDetailVM.model";
 import {ServiceOptionVM} from "../../models/ServiceOptionVM.model";
+import {OrderBagVM} from "../../models/OrderBagVM.model";
 
 @Injectable()
 export class OrderBagService {
@@ -52,5 +53,10 @@ export class OrderBagService {
       })
       //...errors if any
       .catch((error:any) => Observable.throw(error || 'Server error'));
+  }
+
+  confirmOrderBag(orderBag:OrderBagVM):any {
+    return this.http.post(API_URL_CONFIRM_ORDER_BAG,orderBag ).toPromise()
+
   }
 }

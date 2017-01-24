@@ -76,7 +76,7 @@ export class OrderBagComponent implements OnDestroy, OnInit,OnChanges {
   removeItem(item:OrderBagItemVM)
   {
     debugger;
-    this.orderBag.items= this.orderBag.items.filter(function(it){return it.sessionTime.id!=item.sessionTime.id})
+    this.orderBag.orderBagServiceItems= this.orderBag.orderBagServiceItems.filter(function(it){return it.timeSession.id!=item.timeSession.id})
     this._cacheUtil.storeInCache(this.orderBagCookieKey,this.orderBag);
     this.totalPrice=OrderBagVM.calculateTotalPrice( this.orderBag);
   }
@@ -84,5 +84,8 @@ export class OrderBagComponent implements OnDestroy, OnInit,OnChanges {
   {
     return JSON.stringify(jo);
   }
-
+  confirmOrderBag()
+  {
+    this.orderBagService.confirmOrderBag(this.orderBag).then((res)=>{console.log(res)}).catch((er)=>{console.log(er)});
+  }
 }

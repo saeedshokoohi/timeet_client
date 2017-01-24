@@ -7,9 +7,10 @@ export class PriceInfoDetailVM
 {
   id: number;
   title:string;
-  qty:number=0;
+  gty:number=0;
   priceWithDiscount:number=0;
   price:number=0;
+  priceInfoDtailId:number;
 
 
   constructor( )

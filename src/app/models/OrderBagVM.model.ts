@@ -11,7 +11,7 @@ import {OrderBagItemVM} from "./OrderBagItemVM.model";
 export class OrderBagVM
 {
   id: number;
-  items:OrderBagItemVM[]=[];
+  orderBagServiceItems:OrderBagItemVM[]=[];
 
 
 
@@ -25,7 +25,7 @@ export class OrderBagVM
     let total:TotalPriceVM=new TotalPriceVM();
     console.log('total price method');
     console.log(orderBag)
-     orderBag.items.forEach(function(item){
+     orderBag.orderBagServiceItems.forEach(function(item){
        if(item)
       total.subtotalServicePrice+= item.totalPrice.subtotalServicePrice;
       total.totalRowPrice+= item.totalPrice.totalRowPrice;

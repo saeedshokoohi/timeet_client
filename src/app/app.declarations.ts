@@ -16,6 +16,8 @@ import {OrderBagComponent} from "./features/order-bag/order-bag.component";
 import {UserProfileComponent} from "./features/user-profile/user-profile.component";
 
 import {LoginFormComponent} from "./features/login/login.component";
+import {RegisterComponent} from "./features/register/register.component";
+import {ActivateAccountComponent} from "./features/activate-account/activate-account.component";
 
 
 export const APP_DECLARATIONS = [
@@ -32,5 +34,5 @@ export const APP_DECLARATIONS = [
   ServiceItemDetailComponent,
   OrderBagItemComponent,
   PersianDate,ParticipantInfoComponent,OrderBagComponent,
-  UserProfileComponent,LoginFormComponent
+  UserProfileComponent,LoginFormComponent,RegisterComponent,ActivateAccountComponent
 ];

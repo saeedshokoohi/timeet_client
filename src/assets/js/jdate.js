@@ -566,7 +566,7 @@ require.register("jdate.js", function (exports, module) {
   } catch (e) {
     var map = require('map-component')
   }
-debugger;
+//debugger;
   module.exports = JDate;
 
   var MONTH_NAMES = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'امرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];

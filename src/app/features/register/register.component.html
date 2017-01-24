@@ -1,0 +1,163 @@
+<div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 [translate]="'register.title'">Registration</h1>
+
+      <div class="alert alert-success" [hidden]="!success" [innerHTML]="'register.messages.success' | translate">
+      </div>
+
+      <div class="alert alert-danger" [hidden]="!error" [innerHTML]="'register.messages.error.fail' | translate">
+      </div>
+
+      <div class="alert alert-danger" [hidden]="!errorUserExists" [innerHTML]="'register.messages.error.userexists' | translate">
+      </div>
+
+      <div class="alert alert-danger" [hidden]="!errorEmailExists" [innerHTML]="'register.messages.error.emailexists' | translate">
+      </div>
+
+      <div class="alert alert-danger" [hidden]="!doNotMatch" [innerHTML]="'global.messages.error.dontmatch' | translate">
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <form #regform="ngForm" novalidate>
+
+       <div class="form-group">
+          <label class="control-label" for="login" [translate]="'global.form.username'">Username</label>
+          <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
+                 #login="ngModel"   [(ngModel)]="registerAccount.login" minlength=1 maxlength=50  required>
+          <div *ngIf="login.errors && (login.dirty || login.touched)" class="alert alert-danger">
+
+            <p class="help-block"
+               *ngIf='login.errors.required' [translate]="'register.messages.validate.login.required'">
+              Your username is required.
+            </p>
+            <p class="help-block"
+               *ngIf="login.errors.minlength" [translate]="'register.messages.validate.login.minlength'">
+              Your username is required to be at least 1 character.
+            </p>
+            <p class="help-block"
+               *ngIf="login.errors.maxlength" [translate]="'register.messages.validate.login.maxlength'">
+              Your username cannot be longer than 50 characters.
+            </p>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="firstName" [translate]="'global.form.firstName'">firstName</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{'global.form.username.placeholder' | translate}}"
+                 #firstName="ngModel"   [(ngModel)]="registerAccount.firstName" required>
+          <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+
+            <p class="help-block"
+               *ngIf='firstName.errors.required' [translate]="'register.messages.validate.firstName.required'">
+              Your username is required.
+            </p>
+
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="lastName" [translate]="'global.form.lastName'">LastName</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="{{'global.form.username.placeholder' | translate}}"
+                 #lastName="ngModel"   [(ngModel)]="registerAccount.lastName" required>
+          <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+
+            <p class="help-block"
+               *ngIf='lastName.errors.required' [translate]="'register.messages.validate.lastName.required'">
+              Your username is required.
+            </p>
+
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="phonenumber" [translate]="'global.form.phonenumber'">phonenumber</label>
+          <input #phonenumber="ngModel" type="text" number class="form-control" id="phonenumber" name="phonenumber" placeholder="{{'global.form.phonenumber.placeholder' | translate}}"
+                 [(ngModel)]="registerAccount.phoneNumber" minlength=10  required>
+          <div *ngIf="phonenumber.errors && (phonenumber.dirty || phonenumber.touched)" class="alert alert-danger">
+            <p class="help-block"
+               *ngIf="phonenumber.errors.required" [translate]="'global.messages.validate.phonenumber.required'">
+              phone number is required.
+            </p>
+            <p class="help-block"
+               *ngIf="phonenumber.errors.number || phonenumber.errors.minlength " [translate]="'global.messages.validate.phonenumber.invalid'">
+              Your e-mail is required to be at least 5 characters.
+            </p>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="email" [translate]="'global.form.email'">E-mail</label>
+          <input #email="ngModel" type="text" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                 [(ngModel)]="registerAccount.email" minlength=5 maxlength=100  required>
+          <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+            <p class="help-block"
+               *ngIf="email.errors.required" [translate]="'global.messages.validate.email.required'">
+              Your e-mail is required.
+            </p>
+            <!--<p class="help-block"-->
+               <!--*ngIf="email.errors.email" [translate]="'global.messages.validate.email.invalid'">-->
+              <!--Your e-mail is invalid.-->
+            <!--</p>-->
+            <p class="help-block"
+               *ngIf="email.errors.minlength" [translate]="'global.messages.validate.email.minlength'">
+              Your e-mail is required to be at least 5 characters.
+            </p>
+            <p class="help-block"
+               *ngIf="email.errors.maxlength" [translate]="'global.messages.validate.email.maxlength'">
+              Your e-mail cannot be longer than 100 characters.
+            </p>
+            <p class="help-block"
+               *ngIf="email.errors.pattern" [translate]="'global.messages.validate.email.invalid'">
+              Your e-mail cannot be longer than 100 characters.
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password" [translate]="'global.form.newpassword'">New password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+               #password="ngModel"   [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+          <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+            <p class="help-block"
+               *ngIf="password.errors.required" [translate]="'global.messages.validate.newpassword.required'">
+              Your password is required.
+            </p>
+            <p class="help-block"
+               *ngIf="password.errors.minlength" [translate]="'global.messages.validate.newpassword.minlength'">
+              Your password is required to be at least 4 characters.
+            </p>
+            <p class="help-block"
+               *ngIf="password.errors.maxlength" [translate]="'global.messages.validate.newpassword.maxlength'">
+              Your password cannot be longer than 50 characters.
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="confirmPassword" [translate]="'global.form.confirmpassword'">New password confirmation</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
+                #confirmPassword="ngModel"  [(ngModel)]="registerAccount.confirmPassword" minlength=4 maxlength=50 required>
+          <div *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+            <p class="help-block"
+               *ngIf="confirmPassword.errors.required" [translate]="'global.messages.validate.confirmpassword.required'">
+              Your confirmation password is required.
+            </p>
+            <p class="help-block"
+               *ngIf="confirmPassword.errors.minlength" [translate]="'global.messages.validate.confirmpassword.minlength'">
+              Your confirmation password is required to be at least 4 characters.
+            </p>
+            <p class="help-block"
+               *ngIf="confirmPassword.errors.maxlength" [translate]="'global.messages.validate.confirmpassword.maxlength'">
+              Your confirmation password cannot be longer than 50 characters.
+            </p>
+          </div>
+        </div>
+
+
+        <button type="button" class="btn btn-primary" (click)="register()" [disabled]="!regform.form.valid" [translate]="'register.form.button'">Register</button>
+      </form>
+      <p></p>
+
+    </div>
+  </div>
+</div>

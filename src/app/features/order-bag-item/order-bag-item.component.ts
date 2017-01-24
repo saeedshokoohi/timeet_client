@@ -20,6 +20,7 @@ import  {Steps} from "./FormSteps"
 import {PersonInfoVM} from "../../models/PersonInfoVM.model";
 import {OrderBagVM} from "../../models/OrderBagVM.model";
 import {CacheUtilService} from "../../services/cache-util/CacheUtilService";
+import {ParticipantVM} from "../../models/ParticipantVM.model";
 
 
 @Component({
@@ -55,11 +56,11 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
 
     this.orderBagItem = new OrderBagItemVM();
     this.orderBagItem.serviceItem = new ServiceItemVM();
-    this.orderBagItem.qtyList = [];
+    this.orderBagItem.orderBagServiceItemDtail = [];
     this.orderBagItem.options = [];
     this.orderBagItem.totalPrice = new TotalPriceVM();
-    this.orderBagItem.participants = [];
-    this.orderBagItem.sessionTime = new SessionTimeVM();
+    this.orderBagItem.participantPersons = [];
+    this.orderBagItem.timeSession = new SessionTimeVM();
   }
 
   ngOnDestroy():void {
@@ -73,7 +74,8 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
       parent.timeSessionId = params['timesessionid'];
       parent.baseurl = params['baseurl'];
       this.orderBagService.getPriceInfoDetailByServiceIdAndTimeSession(this.serviceItemId, this.timeSessionId).subscribe(function (prices) {
-        parent.orderBagItem.qtyList = prices;
+        parent.orderBagItem.orderBagServiceItemDtail = prices;
+       parent.orderBagItem.orderBagServiceItemDtail.map((p)=>{p.priceInfoDtailId=p.id;p.id=null;})
       });
       this.orderBagService.getServiceItemOptionsByServiceItemid(this.serviceItemId).subscribe(function (options) {
         parent.orderBagItem.options = options;
@@ -83,12 +85,13 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
         parent.serviceItemDetail = si;
 
         parent.orderBagItem.serviceItem = si;
+        parent.orderBagItem.serviceItemId = si.id;
 
       });
       this.orderBagService.getServiceTimeSessionById(this.timeSessionId).subscribe(function (si) {
         parent.serviceTimeSession = si;
 
-        parent.orderBagItem.sessionTime = si;
+        parent.orderBagItem.timeSession = si;
 
       });
     });
@@ -102,11 +105,11 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
   itemChanged(e) {
     let parent = this;
     parent.orderBagItem.totalPrice = new TotalPriceVM();
-    this.orderBagItem.qtyList.forEach(function (price) {
+    this.orderBagItem.orderBagServiceItemDtail.forEach(function (price) {
 
-      if (price.qty > 0) {
-        parent.orderBagItem.totalPrice.subtotalServicePrice += price.qty * price.price;
-        let discount = (price.qty * price.price) - (price.qty * price.priceWithDiscount);
+      if (price.gty > 0) {
+        parent.orderBagItem.totalPrice.subtotalServicePrice += price.gty * price.price;
+        let discount = (price.gty * price.price) - (price.gty * price.priceWithDiscount);
         parent.orderBagItem.totalPrice.subtotalDiscount += discount;
       }
     });
@@ -122,16 +125,16 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
 
   gotoStep2() {
     let totalQty = 0;
-    this.orderBagItem.qtyList.forEach(function (price) {
-      if (price.qty > 0) totalQty += price.qty;
+    this.orderBagItem.orderBagServiceItemDtail.forEach(function (price) {
+      if (price.gty > 0) totalQty += price.gty;
     });
     debugger;
-    this.orderBagItem.participants = [];
+    this.orderBagItem.participantPersons = [];
     for (let i = 0; i < totalQty; i++) {
-      this.orderBagItem.participants.push(new PersonInfoVM());
+      this.orderBagItem.participantPersons.push(new ParticipantVM());
     }
     console.log(totalQty);
-    console.log(this.orderBagItem.participants);
+    console.log(this.orderBagItem.participantPersons);
     this.formState = Steps.step2;
   }
 
@@ -142,7 +145,7 @@ export class OrderBagItemComponent implements OnDestroy, OnInit,OnChanges {
       userOrderBag = new OrderBagVM();
       this._cacheUtil.storeInCache(orderBagCookieKey, userOrderBag);
     }
-    userOrderBag.items.push(this.orderBagItem);
+    userOrderBag.orderBagServiceItems.push(this.orderBagItem);
     debugger;
     this._cacheUtil.storeInCache(orderBagCookieKey, userOrderBag);
     this.router.navigateByUrl(this.baseurl + '/orderbag');

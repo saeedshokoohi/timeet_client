@@ -16,7 +16,7 @@
                        <div class="panel-heading">{{serviceItemDetail.itemTitle}}</div>
                        <div class="panel-body">
 
-                         <div *ngFor="let priceInfoDtail of orderBagItem.qtyList" class="form-group">
+                         <div *ngFor="let priceInfoDtail of orderBagItem.orderBagServiceItemDtail" class="form-group">
 
                            <div class="row">
                              <div class="col-sm-7"></div>
@@ -29,7 +29,7 @@
                              <div class="col-sm-1">
                                <input type="number" (ngModelChange)="itemChanged($event)"  class="form-control-inline" style="width: 90%" name="qty"
                                       id="field_qty"
-                                      [(ngModel)]="priceInfoDtail.qty"/>
+                                      [(ngModel)]="priceInfoDtail.gty"/>
                              </div>
                              <div class="col-sm-2">
                                {{'orderBagServiceItemDtail.gty' | translate}}{{'
@@ -144,11 +144,11 @@
 
     <div [hidden]="formState!=1" >
 
-                    <span *ngFor="let participant of orderBagItem.participants">
+                    <span *ngFor="let participant of orderBagItem.participantPersons">
 
                         <div class="form-group" id="pfPersonInfo">
 
-                          <participant-info [participant]="participant"  ></participant-info>
+                          <participant-info [participant]="participant.personInfo"  ></participant-info>
 
                           <!--        <pf-person-info person-info="participant.personInfo">
 

@@ -13,6 +13,8 @@ import { Modal } from 'angular2-modal/plugins/bootstrap';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { Overlay, overlayConfigFactory } from 'angular2-modal';
 import {LoginFormComponent} from "./features/login/login.component";
+import {UserVM} from "./models/UserVM";
+import {AuthService} from "./services/auth/AuthService";
 
 
 @Component({
@@ -34,6 +36,8 @@ export class AppComponent implements OnInit {
   private baseurl;
   private userName:string;
   private password:string;
+  private account:UserVM=new UserVM();
+  private isAuthenticated;
 
   constructor(
     public ref:ChangeDetectorRef,
@@ -41,6 +45,7 @@ export class AppComponent implements OnInit {
     public router: Router,
     public translate: TranslateService,
     private companyService:CompanyService,
+    private authService:AuthService,
     overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal
   ) {
     overlay.defaultViewContainer = vcRef;
@@ -53,7 +58,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    let parent=this;
+    this.authService.Account().subscribe((account)=>this.account=account);
+    this.checkAuthenticated();
+    this.router.events.subscribe((r)=>{
+      parent.checkAuthenticated();
+    });
+
+
   }
+
   activateEvent(event) {
 debugger;
     if(event.route)
@@ -89,6 +103,35 @@ debugger;
   }
   openLoginForm()
   {
-    return this.modal.open(LoginFormComponent,  overlayConfigFactory({ userName:'', password: '' }, BSModalContext));
+    this.router.navigateByUrl(this.baseurl+"/login?backurl="+this.baseurl+'/home');
+   // return this.modal.open(LoginFormComponent,  overlayConfigFactory({ userName:'', password: '',accout:this.account,onclose:this.onLoginClosed }, BSModalContext));
+
   }
+  openRegisterForm()
+  {
+this.router.navigateByUrl(this.baseurl+'/register');
+  }
+
+  logout()
+  {
+    this.authService.logout();
+    this.account=new UserVM();
+    this.checkAuthenticated();
+
+
+
+  }
+  checkAuthenticated()
+  {
+debugger;
+
+    let newIsAuthenticatednew=  this.authService.isLoggedIn();
+    if(newIsAuthenticatednew && newIsAuthenticatednew!=this.isAuthenticated) {
+      this.authService.Account().subscribe((account)=>this.account = account);
+
+    }
+    this.isAuthenticated=newIsAuthenticatednew;
+  }
+
+
 }

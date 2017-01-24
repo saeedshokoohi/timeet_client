@@ -15,6 +15,8 @@ import { UserEffects } from './user/user.effects';
 import { Ng2SelectModule } from 'ng2-material-select';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { CustomFormsModule } from 'ng2-validation';
+import { ReCaptchaModule } from 'angular2-recaptcha';
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -39,6 +41,7 @@ export const APP_IMPORTS = [
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule,
   ModalModule.forRoot(),
-  BootstrapModalModule
+  BootstrapModalModule,
+  CustomFormsModule,ReCaptchaModule
 ];
 

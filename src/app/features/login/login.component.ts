@@ -7,6 +7,8 @@ import {LoginContext} from "./LoginContext";
 import {AuthService} from "../../services/auth/AuthService";
 import {LoginVM} from "../../models/LoginVM";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 
@@ -17,19 +19,23 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
   selector: 'login-form',
   templateUrl: 'login.component.html',
   styleUrls: ['login.style.css'],
+
   providers: [CompanyService,AuthService,CookieService]
 })
-export class LoginFormComponent implements CloseGuard, ModalComponent<LoginContext> {
+export class LoginFormComponent  {
   context:LoginContext;
 
   public wrongAnswer:boolean;
   private userName;
   private password;
+  private error=null;
 
-  constructor(public dialog:DialogRef<LoginContext>,private authService:AuthService,private _coockieService:CookieService) {
-    this.context = dialog.context;
-    this.wrongAnswer = true;
-    //  dialog.setCloseGuard(this);
+
+  constructor(private authService:AuthService,
+              public route: ActivatedRoute,
+              public router: Router,
+              private _coockieService:CookieService) {
+
   }
 
 
@@ -39,24 +45,33 @@ export class LoginFormComponent implements CloseGuard, ModalComponent<LoginConte
     credential.password=this.password;
     credential.rememberMe=true;
     let parent=this;
+    this.error=null;
     this.authService.login(credential) .then(function(res){
-      debugger;
-      parent.dialog.close();
-        parent._coockieService.put("myName","saeed");
-        console.log( parent._coockieService.getAll());
-      parent.authService.loggedIn().then((res)=>{ console.log('success login'); console.log(res);});
+      parent.authService.loggedIn().then((res)=>{parent.doAfterSuccessLogin() });
 
       console.log(res)})
-      .catch(function(err){debugger; console.log(err)});;
+      .catch(function(err){parent.error='error'; console.log(err)});;
 
   }
 
+  doAfterSuccessLogin()
+  {
+    this.route.queryParams.subscribe((p)=>{
+      let backurl = p['backurl'];
+      this.authService.setAsLoggedIn();
+      this.router.navigateByUrl(backurl);
+    })
 
+  }
   beforeDismiss():boolean {
     return true;
   }
 
   beforeClose():boolean {
     return true;
+  }
+  handleCorrectCaptcha(e)
+  {
+      console.log(e);
   }
 }

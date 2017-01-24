@@ -5,6 +5,7 @@ import {TotalPriceVM} from "./TotalPriceVM.model";
 import {PersonInfoVM} from "./PersonInfoVM.model";
 import {ServiceItemVM} from "./ServiceItemVM";
 import {SessionTimeVM} from "./SessionTimeVM.model";
+import {ParticipantVM} from "./ParticipantVM.model";
 /**
  * Created by saeed on 12/29/2016.
  */
@@ -12,12 +13,14 @@ import {SessionTimeVM} from "./SessionTimeVM.model";
 export class OrderBagItemVM
 {
   id: number;
-  qtyList:PriceInfoDetailVM[];
+  orderBagServiceItemDtail:PriceInfoDetailVM[];
   options:ServiceOptionVM[];
   totalPrice:TotalPriceVM;
-  participants:PersonInfoVM[];
+  participantPersons:ParticipantVM[];
   serviceItem:ServiceItemVM;
-  sessionTime:SessionTimeVM;
+  timeSession:SessionTimeVM;
+  serviceItemId:number;
+
 
 
   constructor( )

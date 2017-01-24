@@ -14,7 +14,7 @@
         <th class="text-center"></th>
         <th class="text-center"></th>
         <th class="text-center"> {{'orderBag.serviceItemTitle' | translate}}</th>
-        <th class="text-center"> {{'orderBag.sessionTime' | translate}}</th>
+        <th class="text-center"> {{'orderBag.timeSession' | translate}}</th>
         <th class="text-center"> {{'orderBag.options' | translate}}</th>
         <th class="text-center"> {{'orderBag.qty' | translate}}</th>
         <th class="text-center"> {{'orderBag.price' | translate}}</th>
@@ -23,7 +23,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of orderBag.items">
+      <tr *ngFor="let item of orderBag.orderBagServiceItems">
         <td>
           <button class="btn btn-danger" (click)="removeItem(item)"  >{{'orderBag.removeItem' | translate}}</button>
         </td>
@@ -33,7 +33,7 @@
           </div>
         </td>
         <td>{{item.serviceItem.itemTitle}}</td>
-        <td>{{item.sessionTime.startTime}}</td>
+        <td>{{item.timeSession.startTime}}</td>
         <td>
 
             <ul >
@@ -45,8 +45,8 @@
 
         </td>
         <td>
-          <div *ngFor="let price of item.qtyList">
-            <span>{{price.title}}</span>: <span>{{price.qty}}</span>
+          <div *ngFor="let price of item.orderBagServiceItemDtail">
+            <span>{{price.title}}</span>: <span>{{price.gty}}</span>
           </div>
         </td>
         <td>
@@ -120,6 +120,7 @@
                 </div>
 
               </div>
+              <button type="button" class="btn btn-success"  (click)="confirmOrderBag()">{{'orderBag.confirm' | translate}} </button>
 
 
             </div>
